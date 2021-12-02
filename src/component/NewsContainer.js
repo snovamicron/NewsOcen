@@ -1,92 +1,82 @@
-import React, { Component } from 'react';
+import React, {  useEffect,useState } from 'react';
 import NewsItem from './NewsItem';
 import propTypes from 'prop-types';
 import { Outlet, Link } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 
-export class NewsContainer extends Component {
+const NewsContainer = (props)=> {
+    const [isLoaded, setIsLoaded] = useState(true)
+    const [apiData, setApiData] = useState([])
+    const [page, setPage] = useState(1)
+    const [totalResults, setTotalResults] = useState(0)
 
-    constructor() {
-        super();
-        this.state = {
-            isLoaded: true,
-            apiData: [],
-            page: 1,
-            totalResults: 0
-        };
-    }
-    giveLink = (page) => {
-        if (this.props.endPoint === "top") {
-            return `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${page}&pageSize=5`
+
+   const giveLink = (page) => {
+        if ( props.endPoint === "top") {
+            return `https://newsapi.org/v2/top-headlines?country=in&category=${ props.category}&apiKey=${ props.apiKey}&page=${page}&pageSize=5`
         } else {
-            return `https://newsapi.org/v2/everything?q=india&apiKey=${this.props.apiKey}&page=${page}&pageSize=5`
+            return `https://newsapi.org/v2/everything?q=india&apiKey=${ props.apiKey}&page=${page}&pageSize=5`
         }
     }
 
-    updateNews = (page) => {
-        this.props.setProgress(20)
-        this.setState({ isLoaded: true })
+   const updateNews = (page) => {
+         props.setProgress(20)
+        setIsLoaded(true)
 
-        fetch(this.giveLink(page))
+        fetch(giveLink(page))
 
             .then((data) => data.json())
 
             .then((getData) => {
-                this.setState({ totalResults: getData.totalResults });
+                setTotalResults(getData.totalResults)
                 return getData.articles
             })
 
             .then(
                 (artArray) => {
-                    this.props.setProgress(100)
-                    this.setState({
-                        apiData: artArray,
-                        isLoaded: false,
-                        page: page
-                    });
+                     props.setProgress(100)
+                    setApiData(artArray)
+                    setIsLoaded(false)
+                    setPage(page)
                 })
 
     }
 
-    componentDidMount() {
-        this.props.setProgress(10)
-        this.updateNews(this.state.page)
-    }
-
-    fetchMoreData = () => {
-        fetch(this.giveLink(this.state.page + 1))
+   const fetchMoreData = () => {
+        fetch(giveLink(page + 1))
 
             .then(data => data.json()).then(getData => {
-                this.setState({ totalResults: getData.totalResults });
+                setTotalResults(getData.totalResults)
                 return getData.articles
             })
 
             .then(
                 (artArray) => {
-                    this.setState({
-                        apiData: this.state.apiData.concat(artArray),
-                        page: this.state.page + 1
-                    });
+                    setApiData(apiData.concat(artArray))
+                    setPage( page + 1)
                 })
     }
 
-    render() {
+    useEffect(() => {
+         updateNews(page)
+    }, [])
+
         return (
             <div>
                 <Link className={`btn btn-info mx-2`} aria-current="page" to="/">Top-Headlines</Link>
                 <Link className={`btn btn-info mx-2`} aria-current="page" to="/everything">Everything</Link>
 
-                <h1 className="text-center">{this.props.endPoint === "top" ? "top-headlines" : "everything"}</h1>
+                <h1 className="text-center">{ props.endPoint === "top" ? "top-headlines" : "everything"}</h1>
 
                 <div className="text-center align-middle">
-                    {this.state.isLoaded && <img src="Rhombus.gif" alt="Loading.gif" />}
+                    {isLoaded && <img src="Rhombus.gif" alt="Loading.gif" />}
                 </div>
 
                 <InfiniteScroll
-                    dataLength={this.state.apiData.length}
-                    next={this.fetchMoreData}
-                    hasMore={this.state.apiData.length !== (this.state.totalResults < 100 ? this.state.totalResults : 100)}
+                    dataLength={apiData.length}
+                    next={ fetchMoreData}
+                    hasMore={apiData.length !== (totalResults < 100 ? totalResults : 100)}
                     loader={<div className="text-center align-middle"><img src="Rhombus.gif" alt="Loading.gif" /></div>}
                     endMessage={
                         <p style={{ textAlign: "center" }}>
@@ -97,7 +87,7 @@ export class NewsContainer extends Component {
 
                         <div className="row">
                             {
-                                !this.state.isLoaded && this.state.apiData.map((Ele) => {
+                                !isLoaded && apiData.map((Ele) => {
                                     return (
                                         <div key={Ele.url} className="col-md-4 my-2">
                                             <NewsItem title={Ele.title && Ele.title} description={Ele.description} imgUrl={Ele.urlToImage} url={Ele.url} publishedAt={new Date(Ele.publishedAt).toString()} author={Ele.author} source={Ele.source.name} />
@@ -115,7 +105,7 @@ export class NewsContainer extends Component {
                 <Outlet />
             </div>
         )
-    }
+   
 
 }
 NewsContainer.defaultProps = {
