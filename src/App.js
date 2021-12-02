@@ -23,7 +23,7 @@ const App = ()=> {
       <div id="mainPage">
          <BrowserRouter>
         <NavBar />
-        <div className="container my-5">
+        <div className="container" style={{marginTop:"80px"}}>
 
         <LoadingBar height={3} color='#f11946' progress={progres} onLoaderFinished={() => setProgress(0)}/>
 
