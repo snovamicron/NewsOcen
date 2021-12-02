@@ -1,0 +1,58 @@
+{
+    "status": "ok",
+    "totalResults": 4,
+    "articles": [
+        {
+            "source": {
+                "id": "bbc-sport",
+                "name": "BBC Sport"
+            },
+            "author": "BBC Sport",
+            "title": "Dressing-room review in cricket plan",
+            "description": "A full review of dressing-room culture is part of a wide-ranging action plan to tackle discrimination and racism in cricket in England and Wales.",
+            "url": "http://www.bbc.co.uk/sport/cricket/59417260",
+            "urlToImage": "https://ichef.bbci.co.uk/live-experience/cps/624/cpsprodpb/13AF9/production/_121833608_gettyimages-1344060699.jpg",
+            "publishedAt": "2021-11-26T15:22:29.7007196Z",
+            "content": "Emotional Rafiq tells MPs about racism at Yorkshire\r\nA full review of dressing-room culture is part of a wide-ranging action plan to tackle discrimination and racism in cricket in England and Wales.\r… [+3924 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-sport",
+                "name": "BBC Sport"
+            },
+            "author": "BBC Sport",
+            "title": "Paine to take break from cricket",
+            "description": "Former Australia Test captain Tim Paine will take a break from cricket \"for the foreseeable future\".",
+            "url": "http://www.bbc.co.uk/sport/cricket/59345925",
+            "urlToImage": "https://ichef.bbci.co.uk/live-experience/cps/624/cpsprodpb/165DC/production/_121821619_gettyimages-1233442372.jpg",
+            "publishedAt": "2021-11-26T15:07:23.3253587Z",
+            "content": "Former Australia Test captain Tim Paine is set to miss the Ashes series against England after announcing he will take an immediate break from cricket.\r\nIn a statement, Cricket Tasmania said Paine, 36… [+3313 chars]"
+        },
+        {
+            "source": {
+                "id": "espn-cric-info",
+                "name": "ESPN Cric Info"
+            },
+            "author": null,
+            "title": "PCB hands Umar Akmal three-year ban from all cricket | ESPNcricinfo.com",
+            "description": "Penalty after the batsman pleaded guilty to not reporting corrupt approaches | ESPNcricinfo.com",
+            "url": "http://www.espncricinfo.com/story/_/id/29103103/pcb-hands-umar-akmal-three-year-ban-all-cricket",
+            "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1099495_800x450.jpg",
+            "publishedAt": "2020-04-27T11:41:47Z",
+            "content": "Umar Akmal's troubled cricket career has hit its biggest roadblock yet, with the PCB handing him a ban from all representative cricket for three years after he pleaded guilty of failing to report det… [+1506 chars]"
+        },
+        {
+            "source": {
+                "id": "espn-cric-info",
+                "name": "ESPN Cric Info"
+            },
+            "author": null,
+            "title": "What we learned from watching the 1992 World Cup final in full again | ESPNcricinfo.com",
+            "description": "Wides, lbw calls, swing - plenty of things were different in white-ball cricket back then | ESPNcricinfo.com",
+            "url": "http://www.espncricinfo.com/story/_/id/28970907/learned-watching-1992-world-cup-final-full-again",
+            "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1219926_1296x729.jpg",
+            "publishedAt": "2020-03-30T15:26:05Z",
+            "content": "Last week, we at ESPNcricinfo did something we have been thinking of doing for eight years now: pretend-live ball-by-ball commentary for a classic cricket match. We knew the result, yes, but we tried… [+6823 chars]"
+        }
+    ]
+}
